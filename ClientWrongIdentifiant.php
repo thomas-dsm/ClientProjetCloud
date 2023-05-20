@@ -9,15 +9,17 @@
         ]);
 
     $account = "cl3";
+    $isbn = "9782070541271";
+    $quantity = 15;
 
     try {
-        $response = $client->request('GET', "/shopping_service/book/9782070541271/customer/cl3", []);
+        $response = $client->request('GET', "/shopping_service/book/".$isbn."/customer/".$account, []);
 
         echo $response->getStatusCode(); 
         echo $response->getHeader('content-type')[0];
         echo $response->getBody(); 
         
-        $response_buy = $client->request('GET', "/shopping_service/book/9782070541271/quantity/15/customer/cl3");
+        $response_buy = $client->request('GET', "/shopping_service/book/".$isbn."/quantity/".$quantity."/customer/".$account);;
         echo $response_buy->getStatusCode(); 
         echo $response_buy->getHeader('content-type')[0];
         echo $response_buy->getBody();
